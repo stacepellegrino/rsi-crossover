@@ -6,11 +6,9 @@ using System;
 
 namespace cAlgo.Indicators
 {
-
     [Indicator(IsOverlay = false, TimeZone = TimeZones.UTC, AutoRescale = false, AccessRights = AccessRights.None)]
     public class RSI : Indicator
     {
-
         private RelativeStrengthIndex rsi1, rsi2;
         private MarketSeries series1, series2;
         private Symbol symbol1, symbol2;
@@ -21,13 +19,11 @@ namespace cAlgo.Indicators
         [Parameter(DefaultValue = "US 500")]
         public string Symbol2 { get; set; }
 
-
         [Output("RSI Symbol 1", Color = Colors.Yellow)]
         public IndicatorDataSeries Result1 { get; set; }
 
         [Output("RSI Symbol 2", Color = Colors.Red)]
         public IndicatorDataSeries Result2 { get; set; }
-
 
         [Parameter("Typical(OHC/3)", DefaultValue = true)]
         public bool is_typic { get; set; }
@@ -70,7 +66,6 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-            
             var index1 = GetIndexByDate(series1, MarketSeries.OpenTime[index]);
             if (index1 != -1)
                 Result1[index] = rsi1.Result[index1];
